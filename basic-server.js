@@ -2,6 +2,8 @@
 
 const http = require('http');
 
+require("dotenv").config();
+
 // server
 const server = http.createServer((req, res) => {
   res.setHeader('Content-type', 'application/json');
@@ -20,5 +22,7 @@ const server = http.createServer((req, res) => {
   res.end(data);
 });
 
+let port = process.env.PORT
+
 // listening port number
-server.listen(1200, () => console.log('Listening on port 1200'));
+server.listen(port, () => console.log(`Listening on port ${port}`));

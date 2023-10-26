@@ -26,6 +26,7 @@
   "homepage": "https://github.com/JudahSan/node-no-jitsu#readme",
   "dependencies": {
     "debug": "^4.3.4",
+    "dotenv": "^16.3.1",
     "formidable": "^3.5.1"
   }
 }

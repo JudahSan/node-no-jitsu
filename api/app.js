@@ -37,13 +37,13 @@ app.post(
     // Validate the 'name' parameter in the request body
     body('name').isLength({ min: 1 }).trim().withMessage('Name is required'),
   ],
-  async (req, res) => {
+  async (req, res, next) => {
     // Check for validation errors
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      // if there are validation errors, respond with a 400 Bad Request status
-      return res.status(400).json({ errors: errors.array() });
-    }
+    // const errors = validationResult(req);
+    // if (!errors.isEmpty()) {
+    //   // if there are validation errors, respond with a 400 Bad Request status
+    //   return res.status(400).json({ errors: errors.array() });
+    // }
     // add new channel the return new list
     // respond with a 201
     try {
@@ -57,6 +57,7 @@ app.post(
       let obj = { id, name, last_update };
       data.channels.push(obj);
       res.status(201).json(obj);
+      console.log('POST', data.channels);
     } catch (error) {
       next(error);
     }

@@ -1,0 +1,40 @@
+{
+  "name": "node-no-jitsu",
+  "version": "1.0.0",
+  "description": "A lightweight and efficient web server ",
+  "main": "basic-server.js",
+  "scripts": {
+    "watch": "nodemon ./basic-server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm version patch",
+    "lint": "echo \"\" >> .prettierrc",
+    "prelint": "touch .prettierrc",
+    "postlint": "echo -e '\\n{\\n\\t\"semi\": true,\\n\\t\"singleQuote\": true\\n} ' >> .prettierrc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JudahSan/node-no-jitsu.git"
+  },
+  "keywords": [
+    "web server",
+    "nodejs"
+  ],
+  "author": "JudahSan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JudahSan/node-no-jitsu/issues"
+  },
+  "homepage": "https://github.com/JudahSan/node-no-jitsu#readme",
+  "dependencies": {
+    "debug": "^4.3.4",
+    "dotenv": "^16.3.1",
+    "formidable": "^3.5.1",
+    "mime-types": "^2.1.35"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "nodemonConfig": {
+    "ignore": ["docs/*", "dist/*"]
+  }
+}

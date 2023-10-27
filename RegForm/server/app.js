@@ -17,14 +17,14 @@ app.post('/register', async (req, res) => {
   // check for no duplicate email
   let userMatch = users.find((user) => req.body.email === user.email);
   if (!userMatch) {
-    passHash = await bcrypt.hash(req.body.password, saltRounds);
+    let passHash = await bcrypt.hash(req.body.password, saltRounds);
 
     let newUser = {
       _id: Date.now(),
       email: req.body.email,
       password: passHash,
     };
-    user.push(newUser);
+    users.push(newUser);
     console.log('Display All Users: ', users);
 
     res.status(201).send({ data: newUser });

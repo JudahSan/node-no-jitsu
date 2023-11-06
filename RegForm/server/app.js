@@ -4,7 +4,7 @@ const cors = require('cors');
 const port = process.env.API_PORT || 4444;
 
 const bcrypt = require('bcrypt');
-const saltRounds = 12;
+const saltRounds = 13;
 
 const users = require('./data').users;
 
@@ -35,17 +35,17 @@ app.post('/register', async (req, res) => {
   }
 });
 
-app.post('./login', async (req, res) => {
+app.post('/login', async (req, res) => {
   // get email and password
   // find match for email
   let userMatch = users.find((user) => req.body.email === user.email);
   if (userMatch) {
     // compare password
-    let submittedPass = req.body.password;
-    let savedPass = userMatch.password;
+    let submittedPass = req.body.password; // plain text from browser
+    let savedPass = userMatch.password; // has been hashed
 
-    const isMatch = await bcrypt.compare(submittedPass, savedPass);
-    if (isMatch) {
+    const passwordIsMatch = await bcrypt.compare(submittedPass, savedPass);
+    if (passwordIsMatch) {
       res.status(200).send({ data: { token: 'this is a pretend token' } });
     } else {
       res
